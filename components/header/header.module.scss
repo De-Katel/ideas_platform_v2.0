@@ -1,0 +1,48 @@
+.header {
+    padding: 0 120px;
+    display: flex;
+    justify-content: space-between;
+    height: 215px;
+    background-color: #f5f5f5;
+
+    .spaseDreams {
+        width: 127px;
+        height: 100%;
+        font-weight: 500;
+        font-size: 30px;
+    }
+
+    .navWrap {
+        width: 395px;
+        color: white;
+        background-color: #252525;
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            font-size: 22px;
+            font-weight: 500;
+
+            ul {
+                padding: 0;
+
+                .other_page {
+                    color: #939393;
+                }
+
+                li {
+                    padding-bottom: 7px;
+                }
+            }
+
+        }
+
+        button {
+            color: white;
+            font-size: 23px;
+            font-weight: 600;
+        }
+    }
+
+
+}
