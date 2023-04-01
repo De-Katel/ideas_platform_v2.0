@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from './header.module.scss'
 
 interface IPageName {
@@ -11,13 +12,21 @@ const Header = ({ page }: IPageName) => {
             <div className={styles.navWrap}>
                 <nav>
                     <ul>
-                        <li className={page === null ? undefined : page !== 'feed' ? styles.other_page : undefined}>Лента идей</li>
-                        <li className={page === null ? undefined : page !== 'ideas' ? styles.other_page : undefined}>Мои идеи</li>
-                        <li className={page === null ? undefined : page !== 'project' ? styles.other_page : undefined}>Мои проекты</li>
+                        <Link style={{ textDecoration: 'none' }} href={'/'}>
+                            <li className={page === null ? styles.this_page : page !== 'feed' ? styles.other_page : styles.this_page}>Лента идей</li>
+                        </Link>
+                        <Link href={'/'} style={{ textDecoration: 'none' }}>
+                            <li className={page === null ? styles.this_page : page !== 'ideas' ? styles.other_page : styles.this_page}>Мои идеи</li>
+                        </Link>
+                        <Link href={'/'} style={{ textDecoration: 'none' }}>
+                            <li className={page === null ? styles.this_page : page !== 'project' ? styles.other_page : styles.this_page}>Мои проекты</li>
+                        </Link>
                     </ul>
-                    <button>
-                        Войти
-                    </button>
+                    <Link href={'/'}>
+                        <button>
+                            Войти
+                        </button>
+                    </Link>
                 </nav>
             </div>
         </header>

@@ -1,3 +1,5 @@
+@use '/styles/abstracts/variables';
+
 .header {
     padding: 0 120px;
     display: flex;
@@ -30,17 +32,33 @@
                     color: #939393;
                 }
 
+                .this_page{
+                    color: white;
+                    text-decoration: none;
+                }
+
                 li {
+                    cursor: pointer;
                     padding-bottom: 7px;
+
+                    &:hover {
+                        color: #c0c0c0;
+                    }
                 }
             }
 
         }
 
         button {
+            cursor: pointer;
+            padding-top: 64px;
             color: white;
             font-size: 23px;
             font-weight: 600;
+
+            &:hover {
+                color: #939393;
+            }
         }
     }
 

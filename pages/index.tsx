@@ -32,8 +32,8 @@ export default function Home() {
       <Header page='ideas' />
       <Slide firstSlide={false}
         imageForSlide={imageForSlideTree.src}
-        quote={'“Сами по себе идеи ценны, но всякая идея в конце концов только идея. Задача в том, чтобы реализовать ее практически”'}
-        quoteAuthor={'Генри Форд'}
+        quote={'“Лучший способ проверить, будет ли ваша идея работать, — это реализовать её”'}
+        quoteAuthor={'Саймон Синек'}
         slideTitleLeft={'Мои'}
         slideTitleRight={'идеи'}
         description={'Расскажи о своих идеях. Найди единомышленников. Получи комментарии и отзывы независимых экспертов.'}
@@ -41,8 +41,8 @@ export default function Home() {
       <Header page='project' />
       <Slide firstSlide={false}
         imageForSlide={imageForSlideFor.src}
-        quote={'“Сами по себе идеи ценны, но всякая идея в конце концов только идея. Задача в том, чтобы реализовать ее практически”'}
-        quoteAuthor={'Генри Форд'}
+        quote={'“Когда вам в голову пришла хорошая идея, действуйте незамедлительно”'}
+        quoteAuthor={'Билл Гейтс'}
         slideTitleLeft={'Мои'}
         slideTitleRight={'проекты'}
         description={'Реализуй свою идею, найди команду для проекта! Получи поддержку Агентства инноваций Москвы!'}

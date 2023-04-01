@@ -9,14 +9,22 @@
     height: 747px;
     background-color: variables.$base-background-color;
 
+    .decor {
+        position: absolute;
+        margin-top: -35px;
+        margin-left: -120px;
+        z-index: 300;
+        width: 200px;
+        height: 70px;
+        background-color: variables.$base-black;
+    }
+
     h1 {
         position: relative;
         font-weight: 700;
         z-index: 450;
         margin-top: 155px;
     }
-
-
 
     .slideLeftSide {
         width: 530px;
@@ -88,6 +96,16 @@
             font-size: 400px;
             color: aliceblue;
 
+            .black_quote_decor {
+                margin-left: -186px;
+                position: absolute;
+                bottom: 0;
+                z-index: 402;
+                border: #000000 2px solid;
+                height: 328px;
+
+            }
+
             // div {
             //     font-size: 400px;
             //     color: aliceblue;
@@ -105,7 +123,28 @@
         }
 
         .quote {
-            color: rgb(212, 14, 14);
+            display: flex;
+            position: relative;
+            z-index: 450;
+            color: white;
+            font-size: 20px;
+            width: 759px;
+            padding: 142px 280px 0 178px;
+
+            .quote_decor {
+                border: 2px white solid;
+                height: 202px;
+                margin-right: 21px;
+            }
+
+            blockquote {
+                margin-bottom: 20px;
+            }
+
+            cite {
+                font-style: normal;
+            }
+
         }
 
     }
