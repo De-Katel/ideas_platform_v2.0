@@ -1,7 +1,13 @@
 import Image from 'next/image'
+import Link from 'next/link'
+
+import { setIsModal } from '@/storage/slises/dataSlise'
+
+import { useAppSelector, useAppDispatch } from '../../storage/hooks'
+
+import ModalAuthentication from '../modal_authentication/modal_authentication'
 
 import styles from './slide.module.scss'
-import Link from 'next/link'
 
 interface ISlideProps {
     imageForSlide: string
@@ -22,6 +28,10 @@ const Slide: React.FC<ISlideProps> = ({
     quote,
     quoteAuthor
 }) => {
+
+    const isModal = useAppSelector((state) => state.data.isModal);
+    const dispatch = useAppDispatch();
+
     return (
         <section className={styles.slideWrapper}>
             {!firstSlide && <div className={styles.decor} style={{ width: '837px' }}></div>}
@@ -41,7 +51,11 @@ const Slide: React.FC<ISlideProps> = ({
                 }
 
                 <h2>{description}</h2>
-                <Link href={'/'}><button>Подробнее</button></Link>
+
+                <button
+                    onClick={() => dispatch(setIsModal())}>
+                    Подробнее
+                </button>
             </div>
 
             <div className={styles.slideRightSide}>
@@ -58,11 +72,13 @@ const Slide: React.FC<ISlideProps> = ({
                         </div>
                     </>
                 }
-                <Image className={styles.imageForSlide} src={imageForSlide} height={613} width={759} alt='sdgsfhdh' />
+                <Image className={styles.imageForSlide} priority={true} src={imageForSlide} height={613} width={759} alt='sdgsfhdh' />
 
                 <div className={styles.pageNumber}><div className={styles.black_quote_decor}></div></div>
 
             </div>
+
+            <ModalAuthentication />
         </section>
     )
 }
