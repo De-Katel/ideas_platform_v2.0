@@ -5,8 +5,6 @@ import { setIsModal } from '@/storage/slises/dataSlise'
 
 import { useAppSelector, useAppDispatch } from '../../storage/hooks'
 
-import ModalAuthentication from '../modal_authentication/modal_authentication'
-
 import styles from './slide.module.scss'
 
 interface ISlideProps {
@@ -29,7 +27,6 @@ const Slide: React.FC<ISlideProps> = ({
     quoteAuthor
 }) => {
 
-    const isModal = useAppSelector((state) => state.data.isModal);
     const dispatch = useAppDispatch();
 
     return (
@@ -77,8 +74,6 @@ const Slide: React.FC<ISlideProps> = ({
                 <div className={styles.pageNumber}><div className={styles.black_quote_decor}></div></div>
 
             </div>
-
-            <ModalAuthentication />
         </section>
     )
 }

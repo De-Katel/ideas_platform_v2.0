@@ -30,10 +30,11 @@ const Header = ({ page }: IPageName) => {
                             <li className={page === null ? styles.this_page : page !== 'project' ? styles.other_page : styles.this_page}>Мои проекты</li>
                         </Link>
                     </ul>
-                    <button
-                        onClick={() => dispatch(setIsModal())}>
-                        Войти
-                    </button>
+                    <Link href={'/signup'}>
+                        <button>
+                            Войти
+                        </button>
+                    </Link>
                 </nav>
             </div>
         </header>
