@@ -14,6 +14,39 @@
         font-size: 30px;
     }
 
+
+    .navWrapBlack {
+        width: 395px;
+        color: variables.$base-black;
+        background-color: variables.$base-background-color;
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            font-size: 22px;
+            font-weight: 500;
+
+            ul {
+                padding: 0;
+
+                .this_page {
+                    color: variables.$base-black;
+                    text-decoration: none;
+                }
+
+                li {
+                    cursor: pointer;
+                    padding-bottom: 7px;
+
+                    &:hover {
+                        color: #c0c0c0;
+                    }
+                }
+            }
+
+        }
+    }
+
     .navWrap {
         width: 395px;
         color: white;
@@ -32,7 +65,7 @@
                     color: #939393;
                 }
 
-                .this_page{
+                .this_page {
                     color: white;
                     text-decoration: none;
                 }

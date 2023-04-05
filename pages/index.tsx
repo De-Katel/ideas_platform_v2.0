@@ -17,7 +17,6 @@ export default function Home() {
         <title>Ideas platform</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Header page={null} />
       <Slide firstSlide={true}
         imageForSlide={imageForSlideOne.src} />
       <Header page='feed' />

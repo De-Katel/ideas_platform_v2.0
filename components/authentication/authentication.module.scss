@@ -1,11 +1,10 @@
 .authentication {
     margin: auto;
-    width: 1440px;
     display: flex;
-    height: 700px;
+    height: calc(100vh - 271px);
     flex-direction: column;
     align-items: center;
-    background: url('../../images/figuri-na-belom.png') left bottom no-repeat, url('../../images/0-p-figuri-na-belom-foneR.png') right bottom no-repeat;
+    background: url('../../images/figuri-na-belom.png') left top 180px no-repeat, url('../../images/0-p-figuri-na-belom-foneR.png') right top  no-repeat;
 
 
     span {
