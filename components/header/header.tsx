@@ -1,23 +1,18 @@
 import Link from 'next/link'
-import { useAppSelector, useAppDispatch } from '../../storage/hooks'
 
-import { setIsModal } from '@/storage/slises/dataSlise';
+import { useAppSelector } from '@/storage/hooks'
 
 import styles from './header.module.scss'
-
-
-
 
 interface IHeaderProps {
     page?: 'feed' | 'ideas' | 'project' | 'all'
     children?: JSX.Element
 }
 
-const Header: React.FC<IHeaderProps> = ({ page, children }) => {
+const Header: React.FC<IHeaderProps> = ({ page, children }): React.ReactElement => {
 
-    const token = true;
 
-    const dispatch = useAppDispatch();
+    const token = useAppSelector(state => state.data.token);
 
     return (
         <>
@@ -38,7 +33,7 @@ const Header: React.FC<IHeaderProps> = ({ page, children }) => {
                         </ul>
                         <Link href={'/signup'}>
                             <button>
-                                Войти
+                                {!token ? 'Войти' : 'Выйти'}
                             </button>
                         </Link>
                     </nav>

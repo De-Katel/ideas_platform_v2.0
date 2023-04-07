@@ -11,14 +11,14 @@ const robotoFlex = Roboto_Flex({
   preload: true
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps): React.ReactElement {
   return (
     <Provider store={store} >
 
       <div className={robotoFlex.className}>
         <Header page='all'>
           <Component {...pageProps} />
-      </Header>
-    </div>
+        </Header>
+      </div>
     </Provider >)
 }

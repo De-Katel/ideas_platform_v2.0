@@ -45,6 +45,18 @@
             }
 
         }
+
+        button {
+            cursor: pointer;
+            padding-top: 64px;
+            color: variables.$base-black;
+            font-size: 23px;
+            font-weight: 600;
+
+            &:hover {
+                color: #939393;
+            }
+        }
     }
 
     .navWrap {

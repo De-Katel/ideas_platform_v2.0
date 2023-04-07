@@ -1,6 +1,6 @@
 import Authentication from "@/components/authentication/authentication"
 
-const AuthenticationPage = () => {
+const AuthenticationPage = (): React.ReactElement => {
     return (
         <Authentication />
     )

@@ -10,7 +10,7 @@ import Header from '../components/header/header'
 import Slide from '@/components/slide/slide'
 
 
-export default function Home() {
+export default function Home(): React.ReactElement {
   return (
     <>
       <Head>

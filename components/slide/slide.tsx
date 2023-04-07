@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { setIsModal } from '@/storage/slises/dataSlise'
 
-import { useAppSelector, useAppDispatch } from '../../storage/hooks'
+import { useAppDispatch } from '../../storage/hooks'
 
 import styles from './slide.module.scss'
 
@@ -17,24 +17,16 @@ interface ISlideProps {
     quoteAuthor?: string
 }
 
-const Slide: React.FC<ISlideProps> = ({
-    imageForSlide,
-    firstSlide,
-    slideTitleLeft,
-    slideTitleRight,
-    description,
-    quote,
-    quoteAuthor
-}) => {
+const Slide: React.FC<ISlideProps> = (props): React.ReactElement => {
 
     const dispatch = useAppDispatch();
 
     return (
         <section className={styles.slideWrapper}>
-            {!firstSlide && <div className={styles.decor} style={{ width: '837px' }}></div>}
+            {!props.firstSlide && <div className={styles.decor} style={{ width: '837px' }}></div>}
             <div className={styles.slideLeftSide}>
 
-                {firstSlide
+                {props.firstSlide
                     ?
                     <div className={styles.firstSlide}>
                         <div className={styles.line}></div>
@@ -44,10 +36,10 @@ const Slide: React.FC<ISlideProps> = ({
                         <h2>Смотри идеи по направлениям, которые тебе интересны.<br /> Помоги воплотить их в жизнь!</h2>
                     </div>
                     :
-                    <h1 style={{ fontSize: '70px' }}>{slideTitleLeft}</h1>
+                    <h1 style={{ fontSize: '70px' }}>{props.slideTitleLeft}</h1>
                 }
 
-                <h2>{description}</h2>
+                <h2>{props.description}</h2>
 
                 <button
                     onClick={() => dispatch(setIsModal())}>
@@ -56,21 +48,20 @@ const Slide: React.FC<ISlideProps> = ({
             </div>
 
             <div className={styles.slideRightSide}>
-                {firstSlide ? null
+                {props.firstSlide ? null
                     :
                     <>
-                        <h1>{slideTitleRight}</h1>
+                        <h1>{props.slideTitleRight}</h1>
                         <div className={styles.quote}>
-                            <div className={styles.quote_decor}></div>
+                            <div className={styles.quote_decor}></div>``
                             <div>
-                                <blockquote>{quote}</blockquote>
-                                <cite>{quoteAuthor}</cite>
+                                <blockquote>{props.quote}</blockquote>
+                                <cite>{props.quoteAuthor}</cite>
                             </div>
                         </div>
                     </>
                 }
-                <Image className={styles.imageForSlide} priority={true} src={imageForSlide} height={613} width={759} alt='sdgsfhdh' />
-
+                <Image className={styles.imageForSlide} priority={true} src={props.imageForSlide} height={613} width={759} alt='sdgsfhdh' />
                 <div className={styles.pageNumber}><div className={styles.black_quote_decor}></div></div>
 
             </div>

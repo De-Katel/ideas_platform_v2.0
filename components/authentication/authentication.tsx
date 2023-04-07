@@ -4,22 +4,29 @@ import { useState } from "react"
 
 import styles from './authentication.module.scss'
 
-const Authentication = () => {
+const Authentication = (): React.ReactElement => {
 
     const [isRegistration, setIsRegistration] = useState(false);
+
+    const handleClick = (): void => setIsRegistration((prev) => !prev)
+
     return (
         < div className={styles.authentication}>
             {isRegistration
-                ? < >
+                ?
+                < >
                     <RegistrationForm />
-                    <button onClick={() => setIsRegistration(false)} >назад</button> </>
-                : < >
+                    <button onClick={handleClick} >назад</button>
+                </>
+                :
+                < >
                     <AuthForm />
                     <span>или</span>
-                    <button onClick={() => setIsRegistration(true)} >Зарегестрироваться</button> </>
+                    <button onClick={handleClick} >Зарегестрироваться</button>
+                </>
             }
 
-        </div>
+        </div >
     )
 
 }
