@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useAppSelector, useAppDispatch } from '@/storage/hooks'
 
-import { useAppSelector } from '@/storage/hooks'
+import { logOut } from '@/storage/slises/dataSlise'
 
 import styles from './header.module.scss'
 
@@ -11,14 +13,20 @@ interface IHeaderProps {
 
 const Header: React.FC<IHeaderProps> = ({ page, children }): React.ReactElement => {
 
-
     const token = useAppSelector(state => state.data.token);
+    const router = useRouter();
+    const dispatch = useAppDispatch();
+
+    const logOutClick = () => {
+        dispatch(logOut());
+        console.log('sdfsdf')
+    }
 
     return (
         <>
             <header className={styles.header}>
                 <div className={styles.spaseDreams}>SPASE DREAMS</div>
-                <div className={token ? styles.navWrapBlack : styles.navWrap}>
+                <div className={router.pathname !== '/' ? styles.navWrapBlack : styles.navWrap}>
                     <nav>
                         <ul>
                             <Link style={{ textDecoration: 'none' }} href={'/'}>
@@ -31,11 +39,15 @@ const Header: React.FC<IHeaderProps> = ({ page, children }): React.ReactElement 
                                 <li className={page === 'all' ? styles.this_page : page !== 'project' ? styles.other_page : styles.this_page}>Мои проекты</li>
                             </Link>
                         </ul>
-                        <Link href={'/signup'}>
-                            <button>
-                                {!token ? 'Войти' : 'Выйти'}
-                            </button>
-                        </Link>
+
+                        {token ?
+                            <button onClick={logOutClick}>Выйти</button>
+                            :
+                            <Link href={'/signup'}>
+                                <button>Войти</button>
+                            </Link>
+                        }
+
                     </nav>
                 </div>
             </header>

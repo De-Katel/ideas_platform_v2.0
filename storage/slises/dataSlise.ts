@@ -32,7 +32,13 @@ export const dataSlice = createSlice({
             state.isModal = !state.isModal;
         },
 
+        logOut: (state) => {
+            state.token = null
+
+        }
+
     },
+
     extraReducers: (builder) => {
         builder
             .addCase(fetchUserLogin.pending, (state) => {
@@ -61,6 +67,6 @@ export const dataSlice = createSlice({
 
 });
 
-export const { setIsModal } = dataSlice.actions;
+export const { setIsModal, logOut } = dataSlice.actions;
 
 export default dataSlice.reducer
