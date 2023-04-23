@@ -1,7 +1,7 @@
 import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { Roboto_Flex } from 'next/font/google'
-import { store } from '../storage/store'
+import { wrapper } from '../storage/store'
 import { Provider } from 'react-redux'
 
 import Header from '@/components/header/header'
@@ -11,14 +11,23 @@ const robotoFlex = Roboto_Flex({
   preload: true
 })
 
-export default function App({ Component, pageProps }: AppProps): React.ReactElement {
+App.getInitialProps = wrapper.getServerSideProps(store => (appCtx): any => {
+  if (!store.getState().data.token) {
+
+  }
+
+});
+
+export default function App({ Component, ...rest }: AppProps): React.ReactElement {
+  const { store, props } = wrapper.useWrappedStore(rest);
   return (
     <Provider store={store} >
 
       <div className={robotoFlex.className}>
         <Header page='all'>
-          <Component {...pageProps} />
+          <Component {...props.pageProps} />
         </Header>
       </div>
     </Provider >)
+
 }

@@ -1,5 +1,9 @@
 import Head from 'next/head'
 
+import { useEffect } from "react";
+import { useRouter } from 'next/router';
+import { useAppSelector } from '@/storage/hooks'
+
 import imageForSlideOne from '../images/giorgio.jpg'
 import imageForSlideTwo from '../images/lenlen.png'
 import imageForSlideTree from '../images/lenlenlen.png'
@@ -11,6 +15,16 @@ import Slide from '@/components/slide/slide'
 
 
 export default function Home(): React.ReactElement {
+
+  const router = useRouter();
+  const token = useAppSelector(state => state.data.token);
+
+  useEffect(() => {
+    if (token) {
+      router.push('/home')
+    }
+  })
+
   return (
     <>
       <Head>

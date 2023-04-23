@@ -1,7 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
-
-import { setIsModal } from '@/storage/slises/dataSlise'
 
 import { useAppDispatch } from '../../storage/hooks'
 
@@ -18,8 +15,6 @@ interface ISlideProps {
 }
 
 const Slide: React.FC<ISlideProps> = (props): React.ReactElement => {
-
-    const dispatch = useAppDispatch();
 
     return (
         <section className={styles.slideWrapper}>
@@ -41,8 +36,7 @@ const Slide: React.FC<ISlideProps> = (props): React.ReactElement => {
 
                 <h2>{props.description}</h2>
 
-                <button
-                    onClick={() => dispatch(setIsModal())}>
+                <button>
                     Подробнее
                 </button>
             </div>

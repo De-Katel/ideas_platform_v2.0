@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
 const initialState = {
-    isModal: true,
     token: null
 };
 
@@ -28,10 +28,6 @@ export const dataSlice = createSlice({
     name: 'data',
     initialState,
     reducers: {
-        setIsModal: (state) => {
-            state.isModal = !state.isModal;
-        },
-
         logOut: (state) => {
             state.token = null
 
@@ -52,21 +48,18 @@ export const dataSlice = createSlice({
                 if (!('auth_token' in action.payload)) return
 
                 state.token = action.payload.auth_token;
-                // state.id = action.payload.id;
             })
-        // .addCase(fetchUserData.rejected, (state) => {
-        //     state.errorMessege = 'Такой пользователь не найден'
-        //     state.isError = true;
-        //     // state.token = null;
-        // })
-        // .addCase(fetchUserData.fulfilled, (state, action) => {
-        //     state.user = action.payload;
-        // })
+            .addCase(HYDRATE, (state, action) => {
+                console.log('HYDRATE', state, action);
+                return {
+                    ...state,
+                };
+            })
+    }
+})
 
-    },
 
-});
 
-export const { setIsModal, logOut } = dataSlice.actions;
+export const { logOut } = dataSlice.actions;
 
 export default dataSlice.reducer

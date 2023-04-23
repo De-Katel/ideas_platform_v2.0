@@ -1,6 +1,7 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useAppSelector, useAppDispatch } from '@/storage/hooks'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useAppSelector, useAppDispatch } from '@/storage/hooks';
+import { useEffect } from "react";
 
 import { logOut } from '@/storage/slises/dataSlise'
 
@@ -11,15 +12,22 @@ interface IHeaderProps {
     children?: JSX.Element
 }
 
-const Header: React.FC<IHeaderProps> = ({ page, children }): React.ReactElement => {
+const Header: React.FC<IHeaderProps> = ({ page, children }: IHeaderProps): React.ReactElement => {
 
     const token = useAppSelector(state => state.data.token);
     const router = useRouter();
     const dispatch = useAppDispatch();
 
+    useEffect(() => {
+        if (!token && router.asPath !== '/') {
+            router.push('/')
+
+        }
+    }, [token])
+
+
     const logOutClick = () => {
         dispatch(logOut());
-        console.log('sdfsdf')
     }
 
     return (
@@ -55,5 +63,7 @@ const Header: React.FC<IHeaderProps> = ({ page, children }): React.ReactElement 
         </>
     )
 }
+
+
 
 export default Header

@@ -7,7 +7,6 @@ import styles from './auht.module.scss'
 interface IAuhtFormData {
     email: string
     password: string
-
 }
 
 const AuthForm = (): React.ReactElement => {
@@ -18,9 +17,7 @@ const AuthForm = (): React.ReactElement => {
 
     const fetchToUserAuth: SubmitHandler<IAuhtFormData> = (data) => {
         dispatch(fetchUserLogin([data.password, data.email]))
-        // reset();
-        console.log(data);
-
+        reset();
     }
 
     return (

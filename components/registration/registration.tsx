@@ -9,21 +9,12 @@ interface IRegFormData {
 
 }
 
-// const appFetch = (path: RequestInfo | URL, init?: RequestInit | undefined): Promise<Response> => {
-//     return fetch(`http://localhost:8000/${path}`, init)
-// }
-
 const RegistrationForm = (): React.ReactElement => {
 
     const { register, formState: { isValid }, reset, handleSubmit } = useForm<IRegFormData>({ mode: 'onBlur' });
 
     const fetchToRegistrationAccount: SubmitHandler<IRegFormData> = (data) => {
 
-        // appFetch('api/v1/auth/users/',{
-        //     method: 'POST',
-        //     body: JSON.stringify(data),
-        //     headers: { "content-type": "application/json" } 
-        // })
         fetch('http://localhost:8000/api/v1/auth/users/', {
             method: 'POST',
             body: JSON.stringify(data),
