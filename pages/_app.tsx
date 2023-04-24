@@ -11,13 +11,6 @@ const robotoFlex = Roboto_Flex({
   preload: true
 })
 
-App.getInitialProps = wrapper.getServerSideProps(store => (appCtx): any => {
-  if (!store.getState().data.token) {
-
-  }
-
-});
-
 export default function App({ Component, ...rest }: AppProps): React.ReactElement {
   const { store, props } = wrapper.useWrappedStore(rest);
   return (

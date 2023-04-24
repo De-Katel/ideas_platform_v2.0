@@ -2,12 +2,13 @@ import { configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { Action } from 'redux';
 import { createWrapper } from 'next-redux-wrapper';
 
-import dataReduser from './slises/dataSlise';
+import dataSlice from './slises/dataSlise';
 
 const makeStore = () => configureStore({
     reducer: {
-        data: dataReduser
-    }
+        [dataSlice.name]: dataSlice.reducer
+    },
+    devTools: true,
 })
 
 export type AppStore = ReturnType<typeof makeStore>;

@@ -1,28 +1,13 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 
-const initialState = {
+interface InitialDataState {
+    token: string | null
+}
+
+const initialState: InitialDataState = {
     token: null
 };
-
-export const fetchUserLogin = createAsyncThunk(
-    'user/fetchUserLogin',
-    async ([password, email]: string[]) => {
-
-        const response = await fetch('http://localhost:8000/api/v1/auth/token/login/', {
-            method: 'POST',
-            body: JSON.stringify({
-                "password": password,
-                "email": email,
-            }),
-            headers: { "content-type": "application/json" }
-        })
-            .then((res) => {
-                return res.json()
-            })
-        return response;
-    }
-);
 
 export const dataSlice = createSlice({
     name: 'data',
@@ -30,36 +15,25 @@ export const dataSlice = createSlice({
     reducers: {
         logOut: (state) => {
             state.token = null
-
         }
 
     },
 
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchUserLogin.pending, (state) => {
-                console.log('start');
-
-            })
-            .addCase(fetchUserLogin.rejected, () => {
-                console.log('Error')
-            })
-            .addCase(fetchUserLogin.fulfilled, (state, action) => {
-                if (!('auth_token' in action.payload)) return
-
-                state.token = action.payload.auth_token;
-            })
-            .addCase(HYDRATE, (state, action) => {
-                console.log('HYDRATE', state, action);
-                return {
-                    ...state,
-                };
-            })
-    }
+    extraReducers:
+        (builder) => {
+            builder
+                .addCase(HYDRATE, (state, { payload }: any) => {
+                    return {
+                        ...state
+                        ,
+                        ...payload.data
+                    };
+                })
+        }
 })
 
 
 
 export const { logOut } = dataSlice.actions;
 
-export default dataSlice.reducer
+export default dataSlice

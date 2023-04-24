@@ -1,5 +1,6 @@
-import { useRouter } from 'next/router';
 import { useAppSelector } from '@/storage/hooks';
+
+
 
 const Home = () => {
 
@@ -9,4 +10,7 @@ const Home = () => {
         token ? <h1>Home</h1> : <span>...loading</span>
     )
 }
+
+
+
 export default Home
