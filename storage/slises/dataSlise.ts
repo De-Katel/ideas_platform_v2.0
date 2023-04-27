@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { AnyAction, createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 
 interface InitialDataState {
@@ -22,7 +22,7 @@ export const dataSlice = createSlice({
     extraReducers:
         (builder) => {
             builder
-                .addCase(HYDRATE, (state, { payload }: any) => {
+                .addCase(HYDRATE, (state, { payload }: AnyAction) => {
                     return {
                         ...state
                         ,

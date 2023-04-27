@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction } from '@reduxjs/toolkit';
+
 import { Action } from 'redux';
-import { createWrapper } from 'next-redux-wrapper';
+import {  createWrapper} from 'next-redux-wrapper';
 
 import dataSlice from './slises/dataSlise';
 

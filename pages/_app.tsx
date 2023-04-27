@@ -12,7 +12,9 @@ const robotoFlex = Roboto_Flex({
 })
 
 export default function App({ Component, ...rest }: AppProps): React.ReactElement {
+
   const { store, props } = wrapper.useWrappedStore(rest);
+
   return (
     <Provider store={store} >
 

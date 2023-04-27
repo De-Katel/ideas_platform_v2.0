@@ -1,8 +1,5 @@
 import Head from 'next/head'
-
-import { useEffect } from "react";
-import { useRouter } from 'next/router';
-import { useAppSelector } from '@/storage/hooks'
+import { wrapper } from '../storage/store';
 
 import imageForSlideOne from '../images/giorgio.jpg'
 import imageForSlideTwo from '../images/lenlen.png'
@@ -10,20 +7,12 @@ import imageForSlideTree from '../images/lenlenlen.png'
 import imageForSlideFor from '../images/lenlenlenlen.png'
 
 
+
 import Header from '../components/header/header'
 import Slide from '@/components/slide/slide'
+import { GetServerSideProps, NextPage } from 'next';
 
-
-export default function Home(): React.ReactElement {
-
-  const router = useRouter();
-  const token = useAppSelector(state => state.data.token);
-
-  useEffect(() => {
-    if (token) {
-      router.push('/home')
-    }
-  })
+const Landing: NextPage = () => {
 
   return (
     <>
@@ -63,3 +52,19 @@ export default function Home(): React.ReactElement {
     </>
   )
 }
+
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(store => async appCtx => {
+
+
+  if (store && store.getState().data.token) {
+    appCtx.res.writeHead(301, {
+      'Location': '/home'
+    });
+    appCtx.res.end();
+  }
+
+  return { props: {} }
+});
+
+
+export default Landing
